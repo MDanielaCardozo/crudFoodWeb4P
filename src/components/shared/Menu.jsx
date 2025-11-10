@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
+/* Rutas Link o NavLink y rutas externas <a/> */
 import { Link, NavLink } from "react-router";
 
 const Menu = () => {

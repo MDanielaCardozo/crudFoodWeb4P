@@ -10,7 +10,6 @@ import FormularioProducto from './components/views/Producto/FormularioProducto'
 
 function App() {
 
-
   return (
     <>
     <BrowserRouter>
@@ -21,7 +20,7 @@ function App() {
         <Route path='/detalle' element={<DetalleDeProducto/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/administrador' element={<Administrador/>}/>
-        <Route path='crear' element={<FormularioProducto></FormularioProducto>}/>
+        <Route path='/administrador/crear' element={<FormularioProducto></FormularioProducto>}/>
         <Route path='editar/:id' element={<FormularioProducto></FormularioProducto>}/>
         <Route path='*' element={<Error></Error>}/>
       </Routes>

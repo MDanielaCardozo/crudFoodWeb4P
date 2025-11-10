@@ -8,7 +8,7 @@ const ItemProducto = () => {
       <td>Nombre</td>
       <td className="text-end">$Precio</td>
       <td className="text-center">
-        <img src="img" className="img-thumbnail" alt="desc"></img>
+        <img src="https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg" className="img-thumbnail w-25" alt="desc"></img>
       </td>
       <td>Categoria</td>
       <td className="text-center">
