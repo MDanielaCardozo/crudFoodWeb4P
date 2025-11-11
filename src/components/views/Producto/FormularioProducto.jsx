@@ -1,15 +1,33 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { crearProducto }  from "../../../helpers/queries";
+import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 const FormularioProducto = () => {
  
-  const { register, handleSubmit,  formState: {errors}} = useForm()
+  const { register, handleSubmit, reset,  formState: {errors}} = useForm()
 
-  const onSubmit = () => {
- /*    if (titulo === "Crear Producto") {
+  useEffect(() => {
+    console.log(crearProducto());
+    
+  }, [])
 
-    } */
-  }
+  const onSubmit = async (producto) => {
+   
+      const respuesta = await crearProducto(producto)
+      if(respuesta.status === 201){
+        Swal.fire({
+          title: "Producto creado",
+          text: `El producto ${producto.nombreProducto} se creo correctamente`,
+          icon: "success",
+        });
+        reset();
+      } else {
+        alert('Ocurrio un error, intentelo de nuevo')
+      }
+    }
+  
 
   return (
     <section className="container mainSection">

@@ -8,6 +8,21 @@
       "descripcion_amplia": "Nuestra pizza margarita artesanal hecha con masa madre, salsa de tomate casera, queso mozzarella de búfala premium y hojas frescas de albahaca. Horneada en horno de piedra para obtener ese crujiente perfecto.",
       "categoria": "Pizzas",
       "imagen": "https://images.pexels.com/photos/16890470/pexels-photo-16890470.jpeg"
+    },
+    {
+      "id": "80e6"
+    },
+    {
+      "id": "1f18"
+    },
+    {
+      "id": "a1b1",
+      "nombreProducto": "Pizza",
+      "precio": "5000",
+      "imagen": "https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg",
+      "categoria": "Pizzas",
+      "descripcion_breve": "hadkjdkfjgklfdjhslfjgkkkkkkkkkkkkkkkkkkkkkk",
+      "descripcion_amplia": "nfejwkkkknnfwkejf"
     }
   ]
 }
