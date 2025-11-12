@@ -21,7 +21,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/administrador' element={<Administrador/>}/>
         <Route path='/administrador/crear' element={<FormularioProducto></FormularioProducto>}/>
-        <Route path='editar/:id' element={<FormularioProducto></FormularioProducto>}/>
+        <Route path='administrador/editar/:id' element={<FormularioProducto></FormularioProducto>}/>
         <Route path='*' element={<Error></Error>}/>
       </Routes>
     </main>

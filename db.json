@@ -1,7 +1,7 @@
 {
   "productos": [
     {
-      "id": 1,
+      "id": "1",
       "nombreProducto": "Pizza Margarita Clásica",
       "precio": 4500,
       "descripcion_breve": "Pizza tradicional con salsa de tomate, mozzarella y albahaca",
