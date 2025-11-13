@@ -26,6 +26,15 @@
       "categoria": "Pizzas",
       "descripcion_breve": "jksashfOIEWU4TJLOIDWLK",
       "descripcion_amplia": "KAjdsfaghuieowqpdl;ksfcjkvbhjkdlsdskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    {
+      "id": "dc64",
+      "nombreProducto": "Pizza Margarita Clásica",
+      "precio": "5550",
+      "imagen": "https://images.pexels.com/photos/16890470/pexels-photo-16890470.jpeg",
+      "categoria": "Pizzas",
+      "descripcion_breve": "Pizza tradicional con salsa de tomate, mozzarella y albahaca",
+      "descripcion_amplia": "Nuestra pizza margarita artesanal hecha con masa madre, salsa de tomate casera, queso mozzarella de búfala premium y hojas frescas de albahaca. Horneada en horno de piedra para obtener ese crujiente perfecto."
     }
   ]
 }

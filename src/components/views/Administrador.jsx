@@ -55,7 +55,7 @@ const Administrador = () => {
         <tbody>
           {productos.map((itemProducto, indice) => (
             <ItemProducto
-              ItemProducto={itemProducto}
+              itemProducto={itemProducto}
               key={itemProducto.id}
               fila={indice + 1}
               setProductos={setProductos}

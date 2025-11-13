@@ -7,6 +7,7 @@ import DetalleDeProducto from './components/views/DetalleDeProducto'
 import Login from './components/views/Login'
 import Administrador from './components/views/Administrador'
 import FormularioProducto from './components/views/Producto/FormularioProducto'
+import { crearProducto } from './helpers/queries'
 
 function App() {
 
@@ -20,8 +21,8 @@ function App() {
         <Route path='/detalle' element={<DetalleDeProducto/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/administrador' element={<Administrador/>}/>
-        <Route path='/administrador/crear' element={<FormularioProducto></FormularioProducto>}/>
-        <Route path='administrador/editar/:id' element={<FormularioProducto></FormularioProducto>}/>
+        <Route path='/administrador/crear' element={<FormularioProducto titulo="Crear Producto" crearProducto={crearProducto}></FormularioProducto>}/>
+        <Route path='administrador/editar/:id' element={<FormularioProducto titulo="Editar Producto" modificarProducto={modificarProducto}></FormularioProducto>}/>
         <Route path='*' element={<Error></Error>}/>
       </Routes>
     </main>

@@ -1,52 +1,96 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearProducto }  from "../../../helpers/queries";
+import { crearProducto, obtenerProductoPorID } from "../../../helpers/queries";
 import Swal from "sweetalert2";
+import { useParams } from "react-router";
 import { useEffect } from "react";
 
-const FormularioProducto = () => {
- 
-  const { register, handleSubmit, reset,  formState: {errors}} = useForm()
+const FormularioProducto = ({ titulo }) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors },
+  } = useForm();
+
+  const { id } = useParams();
 
   useEffect(() => {
-    console.log(crearProducto());
-    
-  }, [])
+    buscarProducto();
+  });
 
-  const onSubmit = async (producto) => {
-   
-      const respuesta = await crearProducto(producto)
-      if(respuesta.status === 201){
-        Swal.fire({
-          title: "Producto creado",
-          text: `El producto ${producto.nombreProducto} se creo correctamente`,
-          icon: "success",
-        });
-        reset();
+  const buscarProducto = async () => {
+    if (titulo === "Editar Producto") {
+      console.log(id);
+      const respuesta = await obtenerProductoPorID(id);
+      if (respuesta.status === 200) {
+        const productoBuscado = await respuesta.json();
+        console.log(productoBuscado);
+        setValue("nombreProducto", productoBuscado.nombreProducto);
+        setValue("precio", productoBuscado.precio);
+        setValue("imagen", productoBuscado.imagen),
+          setValue("descripcion_breve", productoBuscado.descripcion_breve),
+          setValue("descripcion_amplia", productoBuscado.descripcion_amplia),
+          setValue("categoria", productoBuscado.categoria);
       } else {
-        alert('Ocurrio un error, intentelo de nuevo')
+        alert("ocurrio un error, intentelo nuevamente");
       }
     }
-  
+  };
+
+  const onSubmit = async (producto) => {
+    console.log(producto);
+    if( titulo === "Crear Producto") {
+    
+    const respuesta = await crearProducto(producto);
+    if (respuesta.status === 201) {
+      Swal.fire({
+        title: "Producto creado",
+        text: `El producto ${producto.nombreProducto} se creo correctamente`,
+        icon: "success",
+      });
+      reset();
+    } else {
+      alert("Ocurrio un error, intentelo de nuevo");
+     
+      
+    } } else {
+      const respuesta = await modificarProducto(id, producto)
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Producto modificado",
+          text: `El producto ${producto.nombreProducto} se actualizo correctamente`,
+          icon: "success",
+        })
+      }
+    }
+  };
 
   return (
     <section className="container mainSection">
-      <h1 className="display-4 mt-5">Titulo Form</h1>
+      <h1 className="display-4 mt-5">{titulo}</h1>
       <hr />
       <Form className="my-4" onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="formNombreProdcuto">
           <Form.Label>Producto*</Form.Label>
-          <Form.Control type="text" placeholder="Ej: Pizza"  {...register("nombreProducto", {
-            required: "El nombre del producto es un dato obligatorio",
-            minLength: {
-              value: 2,
-              message: "El nombre del producto debe tener al menos dos caracteres"
-            },
-            maxLength: { 
-              value: 100, 
-              message: "El nombre del producto debe tener como maximo 100 caracteres"
-            },
-          })}/>
+          <Form.Control
+            type="text"
+            placeholder="Ej: Pizza"
+            {...register("nombreProducto", {
+              required: "El nombre del producto es un dato obligatorio",
+              minLength: {
+                value: 2,
+                message:
+                  "El nombre del producto debe tener al menos dos caracteres",
+              },
+              maxLength: {
+                value: 100,
+                message:
+                  "El nombre del producto debe tener como maximo 100 caracteres",
+              },
+            })}
+          />
           <Form.Text className="text-danger">
             {errors.nombreProducto?.message}
           </Form.Text>
@@ -61,27 +105,31 @@ const FormularioProducto = () => {
               required: "El precio es un valor obligatorio",
               min: {
                 value: 100,
-                message: "El precio minimo del producto debe ser al menos $100"
+                message: "El precio minimo del producto debe ser al menos $100",
               },
               max: {
                 value: 1000000,
-                message: "El precio minimo del producto debe ser de hasta $1000000"
-              }
-            })
-
-            }
+                message:
+                  "El precio minimo del producto debe ser de hasta $1000000",
+              },
+            })}
           />
-          <Form.Text className="text-danger">{errors.precio?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.precio?.message}
+          </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
           <Form.Label>Imagen URL*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: https://www.pexels.com/es-es/pizza/"
-            {...register("imagen", {required: "La url de la imagen es un dato obligatorio",
+            {...register("imagen", {
+              required: "La url de la imagen es un dato obligatorio",
               pattern: {
                 value: /^https?:\/\/[^\s]+\.(png|jpg|jpeg|gif|bmp|webp|svg)$/,
-              message: "La imagen debe ser una url de imagen valida terminada en (jpg|jpeg|png|webp)" }            
+                message:
+                  "La imagen debe ser una url de imagen valida terminada en (jpg|jpeg|png|webp)",
+              },
             })}
           />
           <Form.Text className="text-danger">
@@ -90,8 +138,11 @@ const FormularioProducto = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrecio">
           <Form.Label>Categoría*</Form.Label>
-          <Form.Select 
-          {...register("categoria", { required: "Debe seleccionar una categoria"})}>
+          <Form.Select
+            {...register("categoria", {
+              required: "Debe seleccionar una categoria",
+            })}
+          >
             <option value="">Seleccione una opcion</option>
             <option value="Acompañamientos">Acompañamientos</option>
             <option value="Bebidas">Bebidas</option>
@@ -112,18 +163,22 @@ const FormularioProducto = () => {
             type="text"
             placeholder="Ej: Pizza tradicional con salsa de tomate, mozzarella y albahaca."
             as="textarea"
-            {...register("descripcion_breve", {required: "La descripcion breve es un dato obligatorio",
+            {...register("descripcion_breve", {
+              required: "La descripcion breve es un dato obligatorio",
               minLength: {
                 value: 5,
-                message: "La descrición breve debe tener almenos 5 caracteres"
+                message: "La descrición breve debe tener almenos 5 caracteres",
               },
               maxLength: {
                 value: 250,
-                message: "La descrición breve debe tener como máximo 250 caracteres",
-              }
+                message:
+                  "La descrición breve debe tener como máximo 250 caracteres",
+              },
             })}
           />
-          <Form.Text className="text-danger">{errors.descripcion_breve?.message}</Form.Text>
+          <Form.Text className="text-danger">
+            {errors.descripcion_breve?.message}
+          </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
           <Form.Label>Descripción Amplia*</Form.Label>
@@ -136,12 +191,14 @@ const FormularioProducto = () => {
               required: "La descripcion amplia es un dato obligatorio",
               minLength: {
                 value: 10,
-                message: "La descrición amplia debe tener almenos 10 caracteres",
+                message:
+                  "La descrición amplia debe tener almenos 10 caracteres",
               },
               maxLength: {
                 value: 500,
-                message: "La descrición amplia debe tener como máximo 500 caracteres",
-              }
+                message:
+                  "La descrición amplia debe tener como máximo 500 caracteres",
+              },
             })}
           />
           <Form.Text className="text-danger">
