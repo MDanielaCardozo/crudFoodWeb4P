@@ -7,7 +7,7 @@ import DetalleDeProducto from './components/views/DetalleDeProducto'
 import Login from './components/views/Login'
 import Administrador from './components/views/Administrador'
 import FormularioProducto from './components/views/Producto/FormularioProducto'
-import { crearProducto } from './helpers/queries'
+import { crearProducto, editarProductoAPI } from './helpers/queries'
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/administrador' element={<Administrador/>}/>
         <Route path='/administrador/crear' element={<FormularioProducto titulo="Crear Producto" crearProducto={crearProducto}></FormularioProducto>}/>
-        <Route path='administrador/editar/:id' element={<FormularioProducto titulo="Editar Producto" modificarProducto={modificarProducto}></FormularioProducto>}/>
+        <Route path='administrador/editar/:id' element={<FormularioProducto titulo="Editar Producto" modificarProducto={editarProductoAPI}></FormularioProducto>}/>
         <Route path='*' element={<Error></Error>}/>
       </Routes>
     </main>

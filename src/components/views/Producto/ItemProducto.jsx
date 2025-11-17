@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router";
 
 const ItemProducto = ( {itemProducto, fila}) => {
-  console.log(itemProducto);
+  console.log(itemProducto.nombreProducto);
   
   return (
     <tr>

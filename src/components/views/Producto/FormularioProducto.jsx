@@ -1,8 +1,8 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearProducto, obtenerProductoPorID } from "../../../helpers/queries";
+import { crearProducto, editarProductoAPI, obtenerProductoPorID } from "../../../helpers/queries";
 import Swal from "sweetalert2";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useEffect } from "react";
 
 const FormularioProducto = ({ titulo }) => {
@@ -16,9 +16,13 @@ const FormularioProducto = ({ titulo }) => {
 
   const { id } = useParams();
 
-  useEffect(() => {
-    buscarProducto();
-  });
+  const navegacion = useNavigate();
+  
+  useEffect(() => { 
+    if(titulo === 'Editar Producto'){
+      buscarProducto();
+    } 
+  }, []);
 
   const buscarProducto = async () => {
     if (titulo === "Editar Producto") {
@@ -56,12 +60,19 @@ const FormularioProducto = ({ titulo }) => {
      
       
     } } else {
-      const respuesta = await modificarProducto(id, producto)
-      if (respuesta.status === 200) {
+      const respuesta = await editarProductoAPI(id, producto)
+      if(respuesta.status === 200) {
         Swal.fire({
           title: "Producto modificado",
           text: `El producto ${producto.nombreProducto} se actualizo correctamente`,
           icon: "success",
+        });
+        navegacion("/administrador");
+      } else {
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: `No se pudo actualizar el producto ${producto.nombreProducto}`,
+          icon:"error",
         })
       }
     }

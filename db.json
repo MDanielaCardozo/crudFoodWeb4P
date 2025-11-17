@@ -10,31 +10,31 @@
       "imagen": "https://images.pexels.com/photos/16890470/pexels-photo-16890470.jpeg"
     },
     {
-      "id": "a1b1",
-      "nombreProducto": "Pizza",
+      "nombreProducto": "Pizza Fugazzeta",
       "precio": "5000",
       "imagen": "https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg",
       "categoria": "Pizzas",
       "descripcion_breve": "hadkjdkfjgklfdjhslfjgkkkkkkkkkkkkkkkkkkkkkk",
-      "descripcion_amplia": "nfejwkkkknnfwkejf"
+      "descripcion_amplia": "nfejwkkkknnfwkejf",
+      "id": "a1b1"
     },
     {
-      "id": "0d30",
-      "nombreProducto": "Pizza",
-      "precio": "5000",
+      "nombreProducto": "Pizza Napolitana",
+      "precio": "8000",
       "imagen": "https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg",
       "categoria": "Pizzas",
       "descripcion_breve": "jksashfOIEWU4TJLOIDWLK",
-      "descripcion_amplia": "KAjdsfaghuieowqpdl;ksfcjkvbhjkdlsdskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+      "descripcion_amplia": "KAjdsfaghuieowqpdl;ksfcjkvbhjkdlsdskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+      "id": "0d30"
     },
     {
-      "id": "dc64",
       "nombreProducto": "Pizza Margarita Clásica",
-      "precio": "5550",
-      "imagen": "https://images.pexels.com/photos/16890470/pexels-photo-16890470.jpeg",
+      "precio": "7000",
+      "imagen": "https://images.pexels.com/photos/367915/pexels-photo-367915.jpeg",
       "categoria": "Pizzas",
       "descripcion_breve": "Pizza tradicional con salsa de tomate, mozzarella y albahaca",
-      "descripcion_amplia": "Nuestra pizza margarita artesanal hecha con masa madre, salsa de tomate casera, queso mozzarella de búfala premium y hojas frescas de albahaca. Horneada en horno de piedra para obtener ese crujiente perfecto."
+      "descripcion_amplia": "Nuestra pizza margarita artesanal hecha con masa madre, salsa de tomate casera, queso mozzarella de búfala premium y hojas frescas de albahaca.",
+      "id": "dc64"
     }
   ]
 }
