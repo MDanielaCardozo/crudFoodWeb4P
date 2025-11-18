@@ -17,7 +17,7 @@ const FormularioProducto = ({ titulo }) => {
   const { id } = useParams();
 
   const navegacion = useNavigate();
-  
+
   useEffect(() => { 
     if(titulo === 'Editar Producto'){
       buscarProducto();

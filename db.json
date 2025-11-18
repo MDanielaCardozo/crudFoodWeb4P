@@ -10,15 +10,6 @@
       "imagen": "https://images.pexels.com/photos/16890470/pexels-photo-16890470.jpeg"
     },
     {
-      "nombreProducto": "Pizza Fugazzeta",
-      "precio": "5000",
-      "imagen": "https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg",
-      "categoria": "Pizzas",
-      "descripcion_breve": "hadkjdkfjgklfdjhslfjgkkkkkkkkkkkkkkkkkkkkkk",
-      "descripcion_amplia": "nfejwkkkknnfwkejf",
-      "id": "a1b1"
-    },
-    {
       "nombreProducto": "Pizza Napolitana",
       "precio": "8000",
       "imagen": "https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg",
